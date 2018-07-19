@@ -1,0 +1,7 @@
+dist
+build
+*.o
+*.d
+*.hex
+*.elf
+compile_commands.json
