@@ -48,15 +48,17 @@ int usb_rawhid_send(const void *buffer, uint32_t timeout);
 }
 #endif
 
-
 // C++ interface
 #ifdef __cplusplus
-class usb_rawhid_class
-{
+class usb_rawhid_class {
 public:
-	int available(void) {return usb_rawhid_available(); }
-	int recv(void *buffer, uint16_t timeout) { return usb_rawhid_recv(buffer, timeout); }
-	int send(const void *buffer, uint16_t timeout) { return usb_rawhid_send(buffer, timeout); }
+  int available(void) { return usb_rawhid_available(); }
+  int recv(void *buffer, uint16_t timeout) {
+    return usb_rawhid_recv(buffer, timeout);
+  }
+  int send(const void *buffer, uint16_t timeout) {
+    return usb_rawhid_send(buffer, timeout);
+  }
 };
 
 extern usb_rawhid_class RawHID;
