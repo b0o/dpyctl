@@ -1,17 +1,19 @@
 #include "WProgram.h"
 #include <usb_dev.h>
 
-#define LED 13
+#ifndef P_LED
+#define P_LED 13
+#endif
 
 uint8_t buf[64];
 
-void setup() { pinMode(LED, OUTPUT); }
+void setup() { pinMode(P_LED, OUTPUT); }
 
 void blink(uint8_t n, uint32_t ms) {
   for (uint8_t i = 0; i < n; i++) {
-    digitalWriteFast(LED, HIGH);
+    digitalWriteFast(P_LED, HIGH);
     delay(ms);
-    digitalWriteFast(LED, LOW);
+    digitalWriteFast(P_LED, LOW);
     if (i < n - 1) {
       delay(ms);
     }
@@ -24,7 +26,7 @@ int main() {
   int8_t r; // received data
   uint16_t count = 0;
 
-  digitalWriteFast(LED, HIGH);
+  digitalWriteFast(P_LED, HIGH);
 
   // Initialize the USB, and then wait for the host to set configuration.
   // If the client is powered without a PC connected to the USB port,
@@ -33,7 +35,7 @@ int main() {
   while (!usb_configuration)
     ; /* wait */
 
-  digitalWriteFast(LED, LOW);
+  digitalWriteFast(P_LED, LOW);
   blink(5, 100);
 
   // Wait an extra second for the server's operating system to load drivers
